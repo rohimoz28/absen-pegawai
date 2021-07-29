@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/dashboard', function () {
+    return view('index');
+});
 
-// Route::get('/', 'PegawaiController@index');
-Route::get('/', 'AuthController@index');
-Route::resource('pegawai', 'PegawaiController');
+// Route::get('/dashboard', 'PegawaiController@index');
+
+Route::get('/', 'AuthController@index')->name('login');
+Route::post('login', 'AuthController@login')->name('login');
+Route::get('logout', 'AuthController@logout')->name('logout');
+
+Route::resource('pegawai', 'PegawaiController')->middleware('loginCheckMiddleware');
