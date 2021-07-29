@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'PegawaiController@index');
+Route::resource('pegawai', 'PegawaiController');

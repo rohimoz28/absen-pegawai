@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pegawai;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -13,7 +14,9 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        return view('pegawai.show');
+        $pegawai = Pegawai::get();
+
+        return view('pegawai.index', ['pegawai' => $pegawai]);
     }
 
     /**
@@ -23,7 +26,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('pegawai.create');
     }
 
     /**
@@ -34,16 +37,21 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->_validation($request);
+
+        Pegawai::create($request->all());
+
+        return redirect()->route('pegawai.index')
+            ->with('message', 'New Pegawai has been added.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pegawai $pegawai)
     {
         //
     }
@@ -51,34 +59,61 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pegawai $pegawai)
     {
-        //
+        return view('pegawai.edit', compact('pegawai'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pegawai $pegawai)
     {
-        //
+        $this->_validation($request);
+
+        $pegawai->update($request->all());
+
+        return redirect()->route('pegawai.index')
+            ->with('message', 'Pegawai updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pegawai $pegawai)
     {
-        //
+        $pegawai->delete();
+
+        return redirect()->route('pegawai.index')
+            ->with('message', 'Pegawai deleted successfully');
+    }
+
+    private function _validation(request $request)
+    {
+        $request->validate(
+            [
+                'nik' => 'required',
+                'full_name' => 'required',
+                'email' => 'required',
+                'mobile_number' => 'required'
+            ],
+            [
+                'nik.required' => 'The NIK field is required.',
+                // 'nik.unique' => 'The NIK is duplicated',
+                'full_name.required' => 'The Name field is required.',
+                'email.required' => 'The Email field is required.',
+                'mobile_number.required' => 'The Mobile Number field is required.'
+            ]
+        );
     }
 }
