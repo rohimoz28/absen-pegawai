@@ -95,7 +95,7 @@ class PegawaiController extends Controller
         $pegawai->delete();
 
         return redirect()->route('pegawai.index')
-            ->with('message', 'Pegawai deleted successfully');
+            ->with('message', 'Pegawai has been deleted');
     }
 
     private function _validation(request $request)

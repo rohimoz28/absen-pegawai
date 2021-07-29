@@ -49,7 +49,8 @@
                                         href="{{ route('pegawai.edit',$p->id) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="badge badge-pill badge-danger">Delete</button>
+                                    <button type="submit" class="badge badge-pill badge-danger"
+                                        onclick="confirm('are you sure to delete this data?')">Delete</button>
                                 </form>
                                 {{-- <a href="{{ route('pegawai.edit',$p->id) }}"
                                 class="badge badge-pill badge-success">Update</a>

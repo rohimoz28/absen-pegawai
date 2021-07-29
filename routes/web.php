@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'PegawaiController@index');
+// Route::get('/', 'PegawaiController@index');
+Route::get('/', 'AuthController@index');
 Route::resource('pegawai', 'PegawaiController');
