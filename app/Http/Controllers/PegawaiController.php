@@ -53,7 +53,7 @@ class PegawaiController extends Controller
      */
     public function show(Pegawai $pegawai)
     {
-        //
+        return view('pegawai.show', compact('pegawai'));
     }
 
     /**
