@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('absen.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Absensi</span></a>
             </li>

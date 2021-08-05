@@ -9,11 +9,11 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        {{-- Content --}}
-        @yield('content')
-        {{-- EndContent --}}
-    </div>
+    {{-- <div class="row"> --}}
+    {{-- Content --}}
+    @yield('content')
+    {{-- EndContent --}}
+    {{-- </div> --}}
 </div>
 <!-- /.container-fluid -->
 

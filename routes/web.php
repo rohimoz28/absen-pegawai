@@ -24,3 +24,4 @@ Route::post('login', 'AuthController@login')->name('login');
 Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::resource('pegawai', 'PegawaiController')->middleware('loginCheckMiddleware');
+Route::resource('absen', 'AbsenController')->middleware('loginCheckMiddleware');
