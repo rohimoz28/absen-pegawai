@@ -10,5 +10,5 @@ class Absen extends Model
     protected $fillable = [
         'nik_id', 'date_time', 'in_out'
     ];
-    public $timestamps = false;
+    protected $dates = ['date_time'];
 }
