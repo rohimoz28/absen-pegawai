@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pegawai;
+use App\Absen;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -53,7 +54,10 @@ class PegawaiController extends Controller
      */
     public function show(Pegawai $pegawai)
     {
-        return view('pegawai.show', compact('pegawai'));
+        $nik = $pegawai->nik;
+        $absen = Absen::where('nik_id', $nik)->get();
+
+        return view('pegawai.show', compact('pegawai', 'absen'));
     }
 
     /**
