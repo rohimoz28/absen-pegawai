@@ -33,7 +33,7 @@ class AbsenController extends Controller
         } else {
             $absen = DB::table('absensi')
                 ->join('pegawai', 'pegawai.nik', '=', 'absensi.nik_id')
-                ->select('absensi.*', 'pegawai.full_name')->orderBy('in_out', 'desc')->paginate(5);
+                ->select('absensi.*', 'pegawai.full_name')->orderBy('date_time', 'desc')->paginate(5);
         }
 
 
@@ -48,8 +48,9 @@ class AbsenController extends Controller
     public function create()
     {
         $pegawai = Pegawai::get();
+        $timeNow = Carbon::now()->format('H.i.s');
 
-        return view('absen.create', ['pegawai' => $pegawai]);
+        return view('absen.create', ['pegawai' => $pegawai, 'time' => $timeNow]);
     }
 
     /**

@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-6">
         <div class="d-flex">
-            <a href="{{ route('absen.index') }}" class="btn btn-info align-self-start mr-2">Show_All</a>
+            <a href="{{ route('absen.index') }}" class="btn btn-info align-self-start w-25 mr-2">Show All</a>
             <div class="input-group mb-3">
                 <form action="{{ route('absen.index') }}" method="GET" role="search" class="form-inline">
                     <input type="text" name="keyword" class="form-control" placeholder="Search by NIK or Name">
