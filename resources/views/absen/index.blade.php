@@ -14,20 +14,22 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <a href="{{ route('absen.create') }}" class="btn btn-primary mb-3">Click for absence</a>
     </div>
-    <div class="col-md-4">
-        <div class="input-group mb-3">
-            <form action="{{ route('absen.index') }}" method="GET" role="search" class="form-inline">
-                <input type="text" name="keyword" class="form-control" placeholder="Search by NIK or Name">
-                @csrf
-                <div class="input-group-append">
-                    <button class="btn btn-success ml-2" type="submit" id="keyword">Search</button>
-                </div>
-            </form>
+    <div class="col-md-6">
+        <div class="d-flex">
+            <a href="{{ route('absen.index') }}" class="btn btn-info align-self-start mr-2">Show_All</a>
+            <div class="input-group mb-3">
+                <form action="{{ route('absen.index') }}" method="GET" role="search" class="form-inline">
+                    <input type="text" name="keyword" class="form-control" placeholder="Search by NIK or Name">
+                    @csrf
+                    <div class="input-group-append">
+                        <button class="btn btn-success ml-2" type="submit" id="keyword">Search</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </div>
 </div>
 <div class="row">
